@@ -53,6 +53,10 @@ header{
 .blue{
   background-color: blue;
 }
+.pressed{
+  background-color: grey;
+  box-shadow: white 10px 10px;
+}
 
 .hidden{
   display: none;

@@ -1,9 +1,5 @@
 var gamePattern = [];
-
-const blueSound = new Audio('/sounds/blue.mp3');
-const greenSound = new Audio('/sounds/green.mp3');
-const redSound = new Audio('/sounds/red.mp3');
-const yellowSound = new Audio('/sounds/yellow.mp3');
+var userClickedPattern = [];
 
 var buttonColors = ["red", "blue", "green", "yellow"];
 function nextSequence(){
@@ -17,4 +13,13 @@ var currentSound = new Audio(String(chosenSound));
 currentSound.play();
 chosenButton.fadeOut(150).fadeIn(150);
 }
+
+$('.button').on("click", function(){
+var userChosenColor = $(this).attr('id');
+userClickedPattern.push(userChosenColor)
+console.log(userClickedPattern);
+var clickedSound = "/sounds/" + userChosenColor + ".mp3";
+var specificSound = new Audio(String(clickedSound));
+specificSound.play();
+});
 
