@@ -3,8 +3,8 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  /* height: 100vh;
+  width: 100vw; */
   margin:0;
 
 }
@@ -13,14 +13,14 @@ header{
 }
 
 .gameBoard{
-  width: 60vw;
-  height: 60vw;
-  /* border: black 1px solid; */
+  width:80vh;
+  height: 80vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   border-radius: 10%;
   gap:1rem;
+ 
 
 }
 .square{
@@ -30,6 +30,7 @@ header{
   display:flex;
   justify-content: center;
   align-items: center;
+  grid-area: auto;
 }
 
 .button{
@@ -37,6 +38,7 @@ header{
   height: 60%;
   width: 60%;
   border-radius: 10%;
+  
 }
 .green{
   background-color: green;
@@ -55,4 +57,14 @@ header{
 .hidden{
   display: none;
   transition: 1s ease-in-out;
+}
+@media (max-width: 600px ){
+.gameBoard{
+  width:90vw;
+  height:90vw;
+}
+.button{
+  height:75%;
+  width: 75%;
+}
 }
