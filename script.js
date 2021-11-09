@@ -40,9 +40,11 @@ console.log(userChosenColor);
 $(document).on("keypress", nextSequence);
 
 function checkAnswer(currentLevel){
-if((gamePattern.length - 1) == (userClickedPattern.length - 1)){
+if((gamePattern.length - 1) === (userClickedPattern.length - 1)){
   console.log("success!")
-
+  setTimeout(nextSequence, 1000);
+  gamePattern = [];
+  
 }else{
   console.log("wrong!")
 }
