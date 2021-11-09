@@ -1,6 +1,6 @@
 var gamePattern = [];
 var userClickedPattern = [];
-var level = 0;
+var currentLevel = 0;
 
 
 
@@ -16,9 +16,9 @@ console.log(chosenSound);
 var currentSound = new Audio(String(chosenSound));
 currentSound.play();
 chosenButton.fadeOut(150).fadeIn(150);
-$('h1').text("Level " + level);
+$('h1').text("Level " + currentLevel);
 
-level++;
+currentLevel++;
 }
 
 $('.button').on("click", function(){
@@ -30,8 +30,23 @@ var clickedSound = "/sounds/" + userChosenColor + ".mp3";
 var specificSound = new Audio(String(clickedSound));
 specificSound.play();
 $(this).fadeOut(150).fadeIn(150);
+
+
+checkAnswer(userClickedPattern.length - 1);
+console.log(gamePattern);
+console.log(userChosenColor);
 });
 
 $(document).on("keypress", nextSequence);
+
+function checkAnswer(currentLevel){
+if((gamePattern.length - 1) == (userClickedPattern.length - 1)){
+  console.log("success!")
+
+}else{
+  console.log("wrong!")
+}
+
+};
 
 
