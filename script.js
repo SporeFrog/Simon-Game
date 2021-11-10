@@ -55,7 +55,10 @@
 
 var gamePattern = [];
 var playerChosenPattern = [];
-var currentLevel = 1; 
+var currentLevel = 0; 
+var possibleColors = ["green", "red", "yellow", "blue"];
+
+
 function checkAnswer(){
 if(gamePattern.length === playerChosenPattern.length){
   for(i=0; i <= (gamePattern.length - 1); i++){
@@ -80,7 +83,13 @@ console.log("Item " + i + " matches");
 $(document).on('keypress', startGame);
 
 function startGame(){
+currentLevel++;
 $('h1').text('Level ' + currentLevel);
+var randomNumber = Math.floor(Math.random() * 4);
+var randomColor = possibleColors[randomNumber];
+gamePattern.push(randomColor);
+console.log(gamePattern);
+
 
 }
 
