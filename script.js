@@ -53,7 +53,48 @@
 
 // };
 
+var gamePattern = [];
+var playerChosenPattern = [];
+var currentLevel = 1; 
+function checkAnswer(){
+if(gamePattern.length === playerChosenPattern.length){
+  for(i=0; i <= (gamePattern.length - 1); i++){
+if(gamePattern[i] == playerChosenPattern[i]){
+console.log("Item " + i + " matches");
 
+
+} else {
+  return console.log("Item " + i + " didn't match. Game Over!")
+}
+
+  }
+  
+
+}else{
+
+  return console.log("Need more inputs");
+}
+
+
+};
+$(document).on('keypress', startGame);
+
+function startGame(){
+$('h1').text('Level ' + currentLevel);
+
+}
+
+
+$('.button').on("click", function(){
+var buttonId = $(this).attr('id');
+var clickedSoundFile = "/sounds/" + buttonId + ".mp3";
+var clickedAudio = new Audio(clickedSoundFile);
+playerChosenPattern.push(buttonId);
+clickedAudio.play();
+console.log(playerChosenPattern);
+checkAnswer();
+
+});
 
 
 
