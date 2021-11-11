@@ -67,7 +67,12 @@ console.log("Item " + i + " matches");
 
 
 } else {
-  return console.log("Item " + i + " didn't match. Game Over!")
+
+  $("h1").text("Game Over! You made it to level " + currentLevel + ". Press A to start again")
+  currentLevel = 0;
+  gamePattern = [];
+  return console.log("Item " + i + " didn't match. Game Over!");
+ 
 }
 
   }
@@ -78,21 +83,59 @@ console.log("Item " + i + " matches");
   return console.log("Need more inputs");
 }
 
-
+setTimeout(nextLevel, 1000);
+playerChosenPattern = [];
 };
-$(document).on('keypress', startGame);
+$(document).on('keypress', function(){
+  if (currentLevel >= 1){
 
-function startGame(){
+    return
+  } else {
+
+
+    nextLevel();
+  }
+
+
+});
+
+// function playGamePattern(){
+// for(i=0; i <= (gamePattern.length - 1); i++){
+  
+//   var color = gamePattern[i];
+//   var colorSoundFile = "/sounds/" + color + ".mp3";
+//   var colorSound = new Audio (colorSoundFile);
+//   var colorId = String("#" + color);
+
+// setTimeout(function (){
+//  colorSound.play();
+// $(colorId).fadeOut(150).fadeIn(150);
+
+// }, 1000);
+  
+  
+
+  
+
+// } 
+
+
+// }
+function nextLevel(){
 currentLevel++;
 $('h1').text('Level ' + currentLevel);
 var randomNumber = Math.floor(Math.random() * 4);
 var randomColor = possibleColors[randomNumber];
+var randomSoundFile = "/sounds/" + randomColor + ".mp3";
+var randomSound = new Audio (randomSoundFile);
+var randomButton = String("#" + randomColor);
+$(randomButton).fadeOut(150).fadeIn(150);
+randomSound.play();
 gamePattern.push(randomColor);
 console.log(gamePattern);
 
 
 }
-
 
 $('.button').on("click", function(){
 var buttonId = $(this).attr('id');
@@ -101,7 +144,9 @@ var clickedAudio = new Audio(clickedSoundFile);
 playerChosenPattern.push(buttonId);
 clickedAudio.play();
 console.log(playerChosenPattern);
-checkAnswer();
+$(this).fadeOut(150).fadeIn(150);
+
+setTimeout(checkAnswer, 1000);
 
 });
 
